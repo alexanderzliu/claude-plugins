@@ -1,0 +1,9 @@
+{
+  "name": "databricks",
+  "version": "0.2.0",
+  "description": "Databricks integration for running notebooks, monitoring cell outputs, and managing jobs. Enables Claude Code to iterate on notebook development and validate job orchestration.",
+  "author": {
+    "name": "Alex Liu",
+    "email": "aliksliu@gmail.com"
+  }
+}

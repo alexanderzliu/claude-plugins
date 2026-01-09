@@ -1,0 +1,24 @@
+{
+  "name": "claude-plugins",
+  "owner": {
+    "name": "Alex Liu",
+    "email": "aliksliu@gmail.com"
+  },
+  "metadata": {
+    "description": "A collection of (personally) useful skills, custom commands and tools"
+  },
+  "plugins": [
+    {
+      "name": "databricks",
+      "description": "Databricks integration for running notebooks, monitoring cell outputs, and managing jobs. Enables iterative notebook development and job orchestration validation.",
+      "version": "0.2.0",
+      "author": {
+        "name": "Alex Liu",
+        "email": "aliksliu@gmail.com"
+      },
+      "source": "./databricks",
+      "mcpServers": "./.mcp.json",
+      "strict": false
+    }
+  ]
+}

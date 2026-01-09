@@ -1,0 +1,11 @@
+{
+  "databricks": {
+    "type": "stdio",
+    "command": "bash",
+    "args": ["${CLAUDE_PLUGIN_ROOT}/server/run.sh"],
+    "env": {
+      "DATABRICKS_HOST": "${DATABRICKS_HOST}",
+      "DATABRICKS_TOKEN": "${DATABRICKS_TOKEN}"
+    }
+  }
+}
