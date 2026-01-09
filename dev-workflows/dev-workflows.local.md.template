@@ -1,0 +1,104 @@
+---
+# Dev Workflows - Global Configuration Template
+# Copy this to: ~/.claude/dev-workflows.local.md
+# Then fill in your actual values
+
+# Notion Configuration
+# Database: Your task tracker database
+notion_sprint_board_id: "YOUR_DATABASE_ID"
+
+# Data Sources (fetch the database to find these collection:// URLs)
+# Tasks - the main task collection
+notion_sprint_data_source: "collection://YOUR_TASKS_DATA_SOURCE_ID"
+# Projects - the parent projects collection (for multi-project check-ins)
+notion_projects_data_source: "collection://YOUR_PROJECTS_DATA_SOURCE_ID"
+
+# Notion property names (adjust to match your board)
+notion_title_property: "Task"
+notion_status_property: "Status"
+notion_priority_property: "Priority"
+notion_due_date_property: "Due Date"
+notion_project_property: "Project"
+notion_workstream_property: "Workstream"
+notion_description_property: "Description"
+notion_assignees_property: "Assignees"
+
+# Status values (adjust to match your board)
+notion_status_todo: "To Do"
+notion_status_in_progress: "In Progress"
+notion_status_blocked: "Blocked"
+notion_status_in_review: "In Review"
+notion_status_done: "Done"
+
+# Priority order (highest to lowest)
+# Used for sorting tasks - first item is highest priority
+notion_priorities: ["Critical", "High", "Medium", "Low", "Backlog"]
+
+# Slack Configuration
+slack_channel_id: "YOUR_CHANNEL_ID"
+
+# GitLab Configuration
+default_target_branch: "main"
+
+# Worktree Configuration
+worktree_base_path: "/home/user/worktrees"
+---
+
+# Dev Workflows Configuration
+
+## Setup
+
+1. Copy this file to `~/.claude/dev-workflows.local.md`
+2. Fill in your Notion database ID, data source collection IDs, Slack channel ID, etc.
+3. Create per-repo config files as needed
+
+### Finding Data Source Collection IDs
+
+To find your collection IDs:
+1. Use `mcp__plugin_Notion_notion__notion-fetch` with your database ID
+2. Look for `<data-source url="collection://...">` in the response
+3. Copy the collection:// URLs to the config
+
+## Per-Repo Configuration
+
+Create `.claude/dev-workflows.local.md` in each repo:
+
+```yaml
+---
+notion_project_filter: "Workstream Name"  # Must match Workstream property value (e.g., "Project Alpha")
+gitlab_project_id: "group/project-name"
+default_target_branch: "master"
+---
+```
+
+The `notion_project_filter` is used by the task-selection command to filter
+tasks to just one project. The starting-check-in command ignores this and shows ALL projects.
+
+## Workstream Property
+
+The Tasks data source uses a `Workstream` select property to filter tasks by project.
+This is more reliable for search/filtering than the `Project` relation field.
+
+Available workstreams should match options in your Notion database:
+- Project Alpha
+- Project Beta
+- Project Gamma
+- (add your workstreams here)
+
+## Usage
+
+After configuration, use natural language or commands:
+- `/starting-check-in` - Daily check-in (shows ALL projects)
+- `/task-selection` - Task selection (filtered to current repo's project)
+- "Develop this task" - Implementation (triggers task-development skill)
+- "I'm done" - Completion workflow (triggers task-completion skill)
+- `/ending-debrief` - Daily summary
+
+## Priority Mapping
+
+The check-in displays priorities as:
+- Critical → `[P0]`
+- High → `[P1]`
+- Medium → `[P2]`
+- Low → `[P3]`
+- Backlog → `[--]`
