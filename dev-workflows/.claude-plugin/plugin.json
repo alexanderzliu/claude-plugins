@@ -1,0 +1,10 @@
+{
+  "name": "dev-workflows",
+  "version": "1.0.0",
+  "description": "End-to-end development workflow automation integrating Notion tasks, GitLab MRs, and Slack notifications with parallel worktree development support",
+  "author": {
+    "name": "Generic Author",
+    "email": "author@example.com"
+  },
+  "keywords": ["workflow", "notion", "gitlab", "slack", "automation", "tasks"]
+}
