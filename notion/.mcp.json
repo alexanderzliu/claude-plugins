@@ -1,0 +1,10 @@
+{
+  "notion": {
+    "type": "stdio",
+    "command": "bash",
+    "args": ["${CLAUDE_PLUGIN_ROOT}/server/run.sh"],
+    "env": {
+      "NOTION_API_KEY": "${NOTION_API_KEY}"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[project]
+name = "notion-mcp-server"
+version = "0.1.0"
+description = "Custom Notion MCP server with structured database querying support"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.25.0",
+    "mcp>=1.0.0",
+]
+
+[project.scripts]
+notion-mcp-server = "src.main:main"
