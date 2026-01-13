@@ -1,0 +1,8 @@
+{
+  "name": "notion",
+  "version": "0.1.0",
+  "description": "Custom Notion MCP server with structured database querying, filters, sorts, and pagination support.",
+  "author": {
+    "name": "Alex Liu"
+  }
+}
